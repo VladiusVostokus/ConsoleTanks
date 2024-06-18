@@ -19,7 +19,7 @@ export class GameField {
           this.gameField.push([...this.row]);
           const row:string[] = this.gameField[i];
           row[0] = '#';
-          row[9] = '#';
+          row[this.width - 1] = '#';
         }
         for (let j = 0; j < this.width; j++) this.gameField[0][j] =              '#';
         for (let j = 0; j < this.width; j++) this.gameField[this.width - 1][j] = '#';
