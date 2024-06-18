@@ -1,3 +1,5 @@
+export type Directions = 'w' | 's' | 'a' | 'd';
+
 export class ITank {
   x: number;
   y: number;
@@ -12,4 +14,8 @@ export class ITank {
     this.speed = speed;
     this.symbol = symbol;
   }
+
+  move(direction: Directions, gameField: unknown) {}
+
+  shoot(gameField: unknown) {}
 }
