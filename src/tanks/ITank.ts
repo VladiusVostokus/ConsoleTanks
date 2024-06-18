@@ -7,7 +7,12 @@ export class ITank {
   speed: number;
   health: number;
 
-  constructor(coordinates: { x: number, y: number }, health: number, speed: number, symbol: string) {
+  constructor(
+    coordinates: { x: number; y: number },
+    health: number,
+    speed: number,
+    symbol: string,
+  ) {
     this.x = coordinates.x;
     this.y = coordinates.y;
     this.health = health;

@@ -1,7 +1,7 @@
-import { ITank } from "./ITank";
+import { ITank } from './ITank';
 
 export class Player extends ITank {
-  constructor(coordinates: { x: number, y: number }) {
+  constructor(coordinates: { x: number; y: number }) {
     const health = 3;
     const speed = 3;
     const symbol = '#';
