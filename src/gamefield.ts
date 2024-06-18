@@ -1,9 +1,9 @@
 export class GameField {
-    symbol: string;
-    width: number;
-    height: number;
-    row: string[];
-    gameField!: string[][];
+    private symbol: string;
+    private width: number;
+    private height: number;
+    private row: string[];
+    private gameField!: string[][];
 
     constructor(symbol: string, widht: number, height: number) {
         this.symbol = symbol;
