@@ -1,12 +1,13 @@
-# node.js-typescript-template
-Template repository with configurations for Node.js application with TypeScript
+# Сonsole Tanks
+This is console version of 2D tanks like on Dendy, but simplified
 
 ## Usage
-
-1. Copy
-**[template](https://github.com/new?template_name=node.js-typescript-template&template_owner=stbestichhh)**
+1. Clone this repo
+  ```bash
+  git clone  https://github.com/VladiusVostokus/ConsoleTanks
+  ```
 
 2. Install dependencies
-  ```shell
+  ```bash
   $ yarn|npm install
   ```
