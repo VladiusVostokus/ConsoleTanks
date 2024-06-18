@@ -1,10 +1,10 @@
 {
-  "name": "node.js-typescript-template",
+  "name": "console-tanks",
   "version": "1.0.0",
-  "description": "Template repository with configurations for Node.js application with TypeScript",
+  "description": "This is console version of 2D tanks like on Dendy, but simplified",
   "main": "src/index.ts",
-  "repository": "https://github.com/stbestichhh/node.js-typescript-template.git",
-  "author": "Kiril Yakymchuk <stbestich@gmail.com>",
+  "repository": "https://github.com/VladiusVostokus/ConsoleTanks",
+  "author": "Vladislav Kovalenko <kovalenkov222@gmail.com>, Kiril Yakymchuk <stbestich@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
