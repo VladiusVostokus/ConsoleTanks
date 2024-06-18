@@ -8,5 +8,5 @@ export class Enemy extends ITank {
     super(coordinates, health, speed, symbol);
   }
 
-  act(gameField: unknown) {}
+  act(_gameField: unknown) {}
 }

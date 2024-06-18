@@ -20,7 +20,7 @@ export class ITank {
     this.symbol = symbol;
   }
 
-  move(direction: Directions, gameField: unknown) {}
+  move(_direction: Directions, _gameField: unknown) {}
 
-  shoot(gameField: unknown) {}
+  shoot(_gameField: unknown) {}
 }
