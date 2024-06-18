@@ -20,8 +20,8 @@ export class GameField {
           row[0] = '#';
           row[9] = '#';
         }
-        for (let j = 0; j < this.width; j++) this.gameField[0][j] = '#';
-        for (let j = 0; j < this.width; j++) this.gameField[9][j] = '#';
+        for (let j = 0; j < this.width; j++) this.gameField[0][j] =              '#';
+        for (let j = 0; j < this.width; j++) this.gameField[this.width - 1][j] = '#';
     }
 
     showGameField() {
