@@ -30,6 +30,14 @@ export class GameField {
         console.log(field); 
     }
 
+    getCell(row: number, col: number) {
+        return this.gameField[row][col];
+    }
+
+    setCell(row: number, col: number, value: string) {
+        this.gameField[row][col] = value;
+    }
+
     getWidth() {
         return this.gameField[0].length;
     }
