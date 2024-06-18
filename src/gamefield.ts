@@ -3,13 +3,14 @@ export class GameField {
     private width: number;
     private height: number;
     private row: string[];
-    private gameField!: string[][];
+    private gameField: string[][];
 
     constructor(symbol: string, widht: number, height: number) {
         this.symbol = symbol;
         this.width = widht;
         this.height = height;
         this.row = new Array(this.width).fill(this.symbol);
+        this.gameField = [];
     }
 
     updateGameField() {
