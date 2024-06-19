@@ -2,11 +2,10 @@ import { GameField } from '../src/gamefield';
 
 const HEIGHT: number = 10;
 const WIDTH: number = 10;
-const EMPTY_SPACE: string = ' ';
 
 describe('Check properties of gamefiedl', () => {
     it('Check size', () => {
-        const gameField = new GameField(EMPTY_SPACE, WIDTH, HEIGHT);
+        const gameField = new GameField(WIDTH, HEIGHT);
         gameField.updateGameField();
         expect(gameField.getHeight()).toBe(HEIGHT);
         expect(gameField.getWidth()).toBe(WIDTH);
@@ -17,7 +16,7 @@ describe('Check properties of gamefiedl', () => {
     });
 
     it('Check get and set', () => {
-        const gameField = new GameField(EMPTY_SPACE, WIDTH, HEIGHT);
+        const gameField = new GameField(WIDTH, HEIGHT);
         gameField.updateGameField();
         gameField.setCell(5, 5,'%');
         const cell:string = gameField.getCell(5,5);
@@ -25,7 +24,7 @@ describe('Check properties of gamefiedl', () => {
     });
 
     it('Check wall and space values', () => {
-        const gameField = new GameField(EMPTY_SPACE, WIDTH, HEIGHT);
+        const gameField = new GameField(WIDTH, HEIGHT);
         gameField.updateGameField();
         const topWall = gameField.getCell(0,3);
         const rightWall = gameField.getCell(5,9);

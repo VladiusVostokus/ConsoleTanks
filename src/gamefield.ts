@@ -1,15 +1,14 @@
 export class GameField {
-    private symbol: string;
+    private space: string = ' ';
     private width: number;
     private height: number;
     private row: string[];
     private gameField: string[][];
 
-    constructor(symbol: string, widht: number, height: number) {
-        this.symbol = symbol;
+    constructor(widht: number, height: number) {
         this.width = widht;
         this.height = height;
-        this.row = new Array(this.width).fill(this.symbol);
+        this.row = new Array(this.width).fill(this.space);
         this.gameField = [];
     }
 
