@@ -19,7 +19,7 @@ export class Tank{
                                      ['#','#','#'],
                                      ['@','@',' '],
                                 ];
-                                
+
     private _curPos: string[][];
 
     constructor(y: number, x:number) {
@@ -38,17 +38,21 @@ export class Tank{
 
     turnUp() {
         this._curPos = this._upPos;
+        this._y--;
     }
 
     turnDown() {
         this._curPos = this._downPos;
+        this._y++;
     }
 
     turnLeft() {
         this._curPos = this._leftPos;
+        this._x--;
     }
 
     turnRight() {
         this._curPos = this._rightPos;
+        this._x++;
     }
 }

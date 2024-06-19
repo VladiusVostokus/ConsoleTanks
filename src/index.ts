@@ -5,7 +5,7 @@ import process from 'process';
 
 const HEIGHT: number = 20;
 const WIDTH: number = 20;
-const TIMEOUT: number = 300;
+const TIMEOUT: number = 60;
 
 const gameField = new GameField(WIDTH, HEIGHT);
 const tank = new Tank(9,9);
