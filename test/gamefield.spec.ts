@@ -31,20 +31,24 @@ describe('Check properties of gamefiedl', () => {
         const bottomWall = gameField.getCell(9,4);
         const leftWall = gameField.getCell(6,0);
 
-        expect(topWall).toBe('#');
-        expect(rightWall).toBe('#');
-        expect(bottomWall).toBe('#');
-        expect(leftWall).toBe('#');
+        const wall = gameField.wall;
+
+        expect(topWall).toBe(wall);
+        expect(rightWall).toBe(wall);
+        expect(bottomWall).toBe(wall);
+        expect(leftWall).toBe(wall);
 
         const upperLeftSpace = gameField.getCell(1,1);
         const upperRightSpace = gameField.getCell(1,8);
         const lowerRightSpace = gameField.getCell(8,8);
         const loverLeftSpace = gameField.getCell(8,1);
 
-        expect(upperLeftSpace).toBe(' ');
-        expect(upperRightSpace).toBe(' ');
-        expect(lowerRightSpace).toBe(' ');
-        expect(loverLeftSpace).toBe(' ');
+        const space = gameField.space;
+
+        expect(upperLeftSpace).toBe(space);
+        expect(upperRightSpace).toBe(space);
+        expect(lowerRightSpace).toBe(space);
+        expect(loverLeftSpace).toBe(space);
     });
 });
   

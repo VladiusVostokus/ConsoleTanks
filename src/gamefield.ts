@@ -1,48 +1,57 @@
 export class GameField {
-    private space: string = ' ';
-    private width: number;
-    private height: number;
-    private row: string[];
-    private gameField: string[][];
+    private _space: string = ' ';
+    private _wall: string = '|'
+    private _width: number;
+    private _height: number;
+    private _row: string[];
+    private _gameField: string[][];
 
     constructor(widht: number, height: number) {
-        this.width = widht;
-        this.height = height;
-        this.row = new Array(this.width).fill(this.space);
-        this.gameField = [];
+        this._width = widht;
+        this._height = height;
+        this._row = new Array(this._width).fill(this._space);
+        this._gameField = [];
     }
 
     updateGameField() {
-        this.gameField = [];
-        for (let i = 0; i < this.height; i++) {
-          this.gameField.push([...this.row]);
-          const row:string[] = this.gameField[i];
-          row[0] = '#';
-          row[this.width - 1] = '#';
+        this._gameField = [];
+        for (let i = 0; i < this._height; i++) {
+          this._gameField.push([...this._row]);
+          const row:string[] = this._gameField[i];
+          row[0] = this.wall;
+          row[this._width - 1] = this._wall;
         }
-        for (let j = 0; j < this.width; j++) this.gameField[0][j] =              '#';
-        for (let j = 0; j < this.width; j++) this.gameField[this.width - 1][j] = '#';
+        for (let j = 0; j < this._width; j++) this._gameField[0][j] =               this._wall;
+        for (let j = 0; j < this._width; j++) this._gameField[this._width - 1][j] = this._wall;
     }
 
     showGameField() {
-        const rows = this.gameField.map(row => row.join(''));
+        const rows = this._gameField.map(row => row.join(''));
         const field = rows.join('\n');
         console.log(field); 
     }
 
     getCell(row: number, col: number) {
-        return this.gameField[row][col];
+        return this._gameField[row][col];
     }
 
     setCell(row: number, col: number, value: string) {
-        this.gameField[row][col] = value;
+        this._gameField[row][col] = value;
     }
 
     getWidth() {
-        return this.gameField[0].length;
+        return this._gameField[0].length;
     }
 
     getHeight() {
-        return this.gameField.length;
+        return this._gameField.length;
+    }
+
+    get wall() {
+        return this._wall;
+    }
+
+    get space() {
+        return this._space;
     }
 }
