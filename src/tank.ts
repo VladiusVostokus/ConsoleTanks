@@ -19,42 +19,36 @@ export class Tank{
                                      ['#','#','#'],
                                      ['@','@',' '],
                                 ];
-
+                                
+    private _curPos: string[][];
 
     constructor(y: number, x:number) {
         this._y = y;
         this._x = x;
+        this._curPos = this._upPos;
     }
 
-    putTankUp(gamefield: GameField) {
+    putTank(gamefield: GameField) {
         for (let i:number = 0; i < 3; i++){
             for (let j:number = 0; j < 3; j++) {
-                gamefield.setCell(this._y+i,this._x+j,this._upPos[i][j]);
+                gamefield.setCell(this._y+i, this._x+j, this._curPos[i][j]);
             }
         }
     }
 
-    putTankDown(gamefield: GameField) {
-        for (let i:number = 0; i < 3; i++){
-            for (let j:number = 0; j < 3; j++) {
-                gamefield.setCell(this._y+i,this._x+j,this._downPos[i][j]);
-            }
-        }
+    turnUp() {
+        this._curPos = this._upPos;
     }
 
-    putTankLeft(gamefield: GameField) {
-        for (let i:number = 0; i < 3; i++){
-            for (let j:number = 0; j < 3; j++) {
-                gamefield.setCell(this._y+i,this._x+j,this._leftPos[i][j]);
-            }
-        }
+    turnDown() {
+        this._curPos = this._downPos;
     }
 
-    putTankRight(gamefield: GameField) {
-        for (let i:number = 0; i < 3; i++){
-            for (let j:number = 0; j < 3; j++) {
-                gamefield.setCell(this._y+i,this._x+j,this._rightPos[i][j]);
-            }
-        }
+    turnLeft() {
+        this._curPos = this._leftPos;
+    }
+
+    turnRight() {
+        this._curPos = this._rightPos;
     }
 }
