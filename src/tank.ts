@@ -3,6 +3,8 @@ import { GameField } from "./gamefield";
 export class Tank{
     private _x: number;
     private _y: number;
+    private _rightBorder: number;
+    private _lowerBorder: number;
     private _upPos: string[][] = [[' ','#',' '],
                                   ['@','#','@'],
                                   ['@','#','@'],
@@ -22,10 +24,12 @@ export class Tank{
 
     private _curPos: string[][];
 
-    constructor(y: number, x:number) {
+    constructor(y: number, x:number, rightWall: number, lowerWall:number) {
         this._y = y;
         this._x = x;
         this._curPos = this._upPos;
+        this._rightBorder = rightWall - 1;
+        this._lowerBorder = lowerWall - 1;
     }
 
     putTank(gamefield: GameField) {
@@ -38,21 +42,21 @@ export class Tank{
 
     turnUp() {
         this._curPos = this._upPos;
-        this._y--;
+        if (this._y !== 1) this._y--;
     }
 
     turnDown() {
         this._curPos = this._downPos;
-        this._y++;
+        if (this._y + 3 !== this._lowerBorder) this._y++;  
     }
 
     turnLeft() {
         this._curPos = this._leftPos;
-        this._x--;
+        if (this._x !== 1) this._x--;
     }
 
     turnRight() {
         this._curPos = this._rightPos;
-        this._x++;
+        if (this._x + 3 !== this._rightBorder) this._x++;
     }
 }

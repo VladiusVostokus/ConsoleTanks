@@ -8,7 +8,7 @@ const WIDTH: number = 20;
 const TIMEOUT: number = 60;
 
 const gameField = new GameField(WIDTH, HEIGHT);
-const tank = new Tank(9,9);
+const tank = new Tank(9,9, WIDTH, HEIGHT);
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -19,7 +19,6 @@ readline.emitKeypressEvents(process.stdin);
 if (process.stdin.isTTY) {
     process.stdin.setRawMode(true);
 }
-
 
 const updateGame = () => {
     console.clear();
@@ -58,5 +57,3 @@ process.stdin.on("keypress", (button: string) => {
 });
   
 setInterval(updateGame, TIMEOUT);
-
-
