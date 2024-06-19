@@ -59,4 +59,16 @@ export class Tank{
         this._curPos = this._rightPos;
         if (this._x + 3 !== this._rightBorder) this._x++;
     }
+
+    get x() {
+        return this._x
+    }
+
+    get y() {
+        return this._y
+    }
+
+    get curPos() {
+        return this._curPos;
+    }
 }
