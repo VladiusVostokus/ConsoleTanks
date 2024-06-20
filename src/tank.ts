@@ -1,10 +1,12 @@
 import { GameField } from "./gamefield";
+import { Projectile } from "./projectile";
 
 export class Tank{
     private _x: number;
     private _y: number;
     private _rightBorder: number;
     private _lowerBorder: number;
+    private _projectiles: Projectile[] = [];
     private _upPos: string[][] = [[' ','#',' '],
                                   ['@','#','@'],
                                   ['@','#','@'],
@@ -60,6 +62,44 @@ export class Tank{
         if (this._x + 3 !== this._rightBorder) this._x++;
     }
 
+    fire() {
+        let fireX: number = this._x;
+        let fireY: number = this._y;
+        let direction: string = '';
+
+        switch (this._curPos) {
+            case this._upPos:
+                fireX += 1;
+                direction = 'up';
+                break;
+            case this._downPos:
+                fireY += 2;
+                fireX += 1;
+                direction = 'down';
+                break;
+            case this._leftPos:
+                fireY++;
+                direction = 'left';
+                break;
+            case this._rightPos:
+                fireY++;
+                fireX += 2;
+                direction = 'right';
+                break;
+        }
+        this._projectiles.push(new Projectile(fireY, fireX, direction));
+    }
+
+    updateProjectiles(gameField: GameField) {
+        this._projectiles = this._projectiles
+            .filter(proj => proj.insideBorder(this._rightBorder,this._lowerBorder));
+
+        for(const proj of this._projectiles ) {
+            proj.moveProjectile();
+            proj.putProjectile(gameField);
+        }
+    }
+
     get x() {
         return this._x
     }
@@ -70,5 +110,9 @@ export class Tank{
 
     get curPos() {
         return this._curPos;
+    }
+
+    get projectilesCount() {
+        return this._projectiles.length;
     }
 }
