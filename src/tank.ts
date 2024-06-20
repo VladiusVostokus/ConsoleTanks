@@ -1,10 +1,12 @@
 import { GameField } from "./gamefield";
+import { Projectile } from "./projectile";
 
 export class Tank{
     private _x: number;
     private _y: number;
     private _rightBorder: number;
     private _lowerBorder: number;
+    private _projectiles: Projectile[] = [];
     private _upPos: string[][] = [[' ','#',' '],
                                   ['@','#','@'],
                                   ['@','#','@'],
@@ -58,6 +60,16 @@ export class Tank{
     turnRight() {
         this._curPos = this._rightPos;
         if (this._x + 3 !== this._rightBorder) this._x++;
+    }
+
+    updateProjectiles(gameField: GameField) {
+        this._projectiles = this._projectiles
+            .filter(proj => proj.insideBorder(this._rightBorder,this._lowerBorder));
+
+        for(const proj of this._projectiles ) {
+            proj.moveProjectile();
+            proj.putProjectile(gameField);
+        }
     }
 
     get x() {

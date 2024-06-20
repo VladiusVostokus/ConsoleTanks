@@ -19,6 +19,7 @@ const updateGame = () => {
     console.clear();
     gameField.updateGameField();
     tank.putTank(gameField);
+    //tank.updateProjectiles(gameField);
     gameField.showGameField();
 };
 

@@ -29,6 +29,13 @@ export class Projectile {
         }
     }
 
+    insideBorder(rightBorder: number, lowerBorder:number): boolean {
+        return this._x !== 1 && 
+               this._x + 1 !== rightBorder &&
+               this._y !== 1 &&
+               this._y + 1 !== lowerBorder;
+    }
+
     putProjectile(gamefield: GameField) {
         gamefield.setCell(this._y, this._x, this._projectile);
     }
