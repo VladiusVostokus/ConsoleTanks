@@ -87,7 +87,7 @@ export class Tank{
                 direction = 'right';
                 break;
         }
-        this._projectiles.push(new Projectile(fireX, fireY, direction));
+        this._projectiles.push(new Projectile(fireY, fireX, direction));
     }
 
     updateProjectiles(gameField: GameField) {

@@ -6,9 +6,9 @@ export class Projectile {
     private _y: number;
     private _direction: string;
 
-    constructor(x: number, y: number, direction: string) {
-        this._x = x;
+    constructor( y: number, x: number, direction: string) {
         this._y = y;
+        this._x = x;
         this._direction = direction;
     }
 
