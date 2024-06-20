@@ -10,11 +10,6 @@ const TIMEOUT: number = 60;
 const gameField = new GameField(WIDTH, HEIGHT);
 const tank = new Tank(9,9, WIDTH, HEIGHT);
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
 readline.emitKeypressEvents(process.stdin);
 if (process.stdin.isTTY) {
     process.stdin.setRawMode(true);
