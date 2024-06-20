@@ -62,6 +62,34 @@ export class Tank{
         if (this._x + 3 !== this._rightBorder) this._x++;
     }
 
+    fire() {
+        let fireX: number = this._x;
+        let fireY: number = this._y;
+        let direction: string = '';
+
+        switch (this._curPos) {
+            case this._upPos:
+                fireX += 1;
+                direction = 'up';
+                break;
+            case this._downPos:
+                fireY += 2;
+                fireX += 1;
+                direction = 'down';
+                break;
+            case this._leftPos:
+                fireY++;
+                direction = 'left';
+                break;
+            case this._rightPos:
+                fireY++;
+                fireX += 2;
+                direction = 'right';
+                break;
+        }
+        this._projectiles.push(new Projectile(fireX, fireY, direction));
+    }
+
     updateProjectiles(gameField: GameField) {
         this._projectiles = this._projectiles
             .filter(proj => proj.insideBorder(this._rightBorder,this._lowerBorder));

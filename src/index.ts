@@ -19,7 +19,7 @@ const updateGame = () => {
     console.clear();
     gameField.updateGameField();
     tank.putTank(gameField);
-    //tank.updateProjectiles(gameField);
+    tank.updateProjectiles(gameField);
     gameField.showGameField();
 };
 
@@ -38,6 +38,10 @@ const controls: { [key: string]: () => void } = {
 
     d: () => {
       tank.turnRight();
+    },
+
+    f: () => {
+       tank.fire();
     },
 
     q: () => {
