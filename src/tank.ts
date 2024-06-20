@@ -111,4 +111,8 @@ export class Tank{
     get curPos() {
         return this._curPos;
     }
+
+    get projectilesCount() {
+        return this._projectiles.length;
+    }
 }
