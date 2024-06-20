@@ -1,7 +1,7 @@
 import { GameField } from "./gamefield";
 
 export class Projectile {
-    private _projectile: string = 'o';
+    private _symbol: string = 'o';
     private _x: number;
     private _y: number;
     private _direction: string;
@@ -37,6 +37,22 @@ export class Projectile {
     }
 
     putProjectile(gamefield: GameField) {
-        gamefield.setCell(this._y, this._x, this._projectile);
+        gamefield.setCell(this._y, this._x, this._symbol);
+    }
+
+    get x() {
+        return this._x;
+    }
+
+    get y() {
+        return this._y;
+    }
+
+    get direction() {
+        return this._direction;
+    }
+
+    get symbol() {
+        return this._symbol;
     }
 }
