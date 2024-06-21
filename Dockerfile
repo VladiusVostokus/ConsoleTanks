@@ -15,8 +15,7 @@ RUN npm run build
 FROM node:21-alpine3.18
 
 # App env
-ENV NODE_ENV production
-USER node
+ENV NODE_ENV=production
 
 WORKDIR /usr/src/app
 
