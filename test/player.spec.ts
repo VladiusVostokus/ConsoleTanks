@@ -6,7 +6,7 @@ describe('Player class', () => {
   let player: Player;
 
   beforeEach(() => {
-    player = new Player(5, 5, 20, 20);
+    player = new Player(5, 5, 20, 20, 500);
   });
 
   it('Check correct call control functions', () => {
