@@ -1,6 +1,8 @@
 # Сonsole Tanks
 This is console version of 2D tanks like on Dendy, but simplified.
 
+Authors: [Vladislav Kovalenko](https://github.com/VladiusVostokus), [Kiril Yakymchuk](https://github.com/stbestichhh)
+
 ## Usage
 
 > [!IMPORTANT]
@@ -16,12 +18,21 @@ This is console version of 2D tanks like on Dendy, but simplified.
   $ npm install
   ```
 
-3. In root directory write in console
+3. In root directory of project write in console
 ```bash
  npx ts-node .\src\index.ts
 # use key
 --difficult (1-10) to set difficulty
-of there are no this key - difficulty = 1
+if there are no this key - difficulty = 1
+```
+3.1 Or use docker, white in console in root directory of project
+```bash
+docker build -t console_tanks
+docker run console_tanks
+# use key
+--difficult (1-10) to set difficulty
+docker run console_tanks node dist/index.js —difficulty (1-10)
+if there are no this key - difficulty = 1
 ```
 
 4.To run tests
