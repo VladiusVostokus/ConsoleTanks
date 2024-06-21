@@ -40,7 +40,7 @@ export class Enemy extends Tank {
       down: () => this.turnDown(),
       left: () => this.turnLeft(),
       right: () => this.turnRight(),
-    }
+    };
 
     goOnDirection[randomDirection]();
   }
