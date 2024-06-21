@@ -1,6 +1,6 @@
 import { GameField } from '../src/gamefield';
 
-describe('Check properties of gamefiedl', () => {
+describe('Gamefield class', () => {
     const HEIGHT: number = 10;
     const WIDTH: number = 10;
     let gameField: GameField;

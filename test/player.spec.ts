@@ -3,7 +3,11 @@ import { Player } from '../src/player';
 jest.mock('../src/tank'); 
 
 describe('Player class', () => {
-    const player = new Player(5, 5, 20, 20);
+  let player: Player;
+
+  beforeEach(() => {
+    player = new Player(5, 5, 20, 20)
+  })
 
     it('Check correct call control functions', () => {
         player.action('w');
@@ -23,7 +27,6 @@ describe('Player class', () => {
     });
 
     it('Check correct hanfling of unknown button', () => {
-        const player = new Player(5, 5, 20, 20);
         expect(() => player.action('z')).not.toThrow();
     });
 });
