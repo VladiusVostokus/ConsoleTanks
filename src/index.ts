@@ -32,6 +32,8 @@ if (process.stdin.isTTY) {
   process.stdin.setRawMode(true);
 }
 
+let enemyCounter: number = 5;
+
 const updateGame = () => {
   console.clear();
   gameField.updateGameField();
@@ -46,6 +48,7 @@ const updateGame = () => {
   enemies.forEach((enemy) => {
     if (enemy.isKilled(gameField)) {
       enemies.splice(enemies.indexOf(enemy), 1);
+      enemyCounter--;
     }
   });
 
@@ -59,7 +62,7 @@ const updateGame = () => {
     process.exit(0);
   }
 
-  if (enemies.length === 0) {
+  if (enemies.length === 0 && enemyCounter === 0) {
     console.log('You win! All enemies are killed.');
     process.exit(0);
   }
