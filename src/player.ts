@@ -48,8 +48,12 @@ export class Player extends Tank {
 
   checkCollisionWithEnemies(enemies: Enemy[]): boolean {
     for (const enemy of enemies) {
-      if (this.y <= enemy.y + 2 && this.y + 2 >= enemy.y &&
-        this.x <= enemy.x + 2 && this.x + 2 >= enemy.x) {
+      if (
+        this.y <= enemy.y + 2 &&
+        this.y + 2 >= enemy.y &&
+        this.x <= enemy.x + 2 &&
+        this.x + 2 >= enemy.x
+      ) {
         return true;
       }
     }

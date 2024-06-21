@@ -16,7 +16,7 @@ const setDifficulty = () => {
     return 10;
   }
   return 1;
-}
+};
 
 const DIFFICULTY_LEVEL = setDifficulty();
 const ENEMY_MOVE_TIMEOUT: number = 500 / DIFFICULTY_LEVEL;
