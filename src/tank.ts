@@ -105,6 +105,17 @@ export class Tank {
     }
   }
 
+  isKilled(gameField: GameField): boolean{ 
+    for (let i: number = 0; i < 3; i++) {
+      for (let j: number = 0; j < 3; j++) {
+        if (gameField.getCell(i + this._y, j + this._x) === 'o') {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   get x() {
     return this._x;
   }

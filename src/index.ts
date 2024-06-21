@@ -32,6 +32,8 @@ if (process.stdin.isTTY) {
   process.stdin.setRawMode(true);
 }
 
+let enemyCounter: number = 5;
+
 const updateGame = () => {
   console.clear();
   gameField.updateGameField();
@@ -44,9 +46,26 @@ const updateGame = () => {
   player.putTank(gameField);
   player.updateProjectiles(gameField);
   enemies.forEach((enemy) => {
+    if (enemy.isKilled(gameField)) {
+      enemies.splice(enemies.indexOf(enemy), 1);
+      enemyCounter--;
+    }
+  });
+
+  enemies.forEach((enemy) => {
     enemy.putTank(gameField);
     enemy.updateProjectiles(gameField);
   });
+
+  if (player.isKilled(gameField)) {
+    console.log('Game Over! You are killed.');
+    process.exit(0);
+  }
+
+  if (enemies.length === 0 && enemyCounter === 0) {
+    console.log('You win! All enemies are killed.');
+    process.exit(0);
+  }
   gameField.showGameField();
 };
 
