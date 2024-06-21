@@ -2,11 +2,11 @@ import { GameField } from './gamefield';
 import { DirectionsType, Projectile } from './projectile';
 
 export class Tank {
-  private _x: number;
-  private _y: number;
-  private readonly _rightBorder: number;
-  private readonly _lowerBorder: number;
-  private _projectiles: Projectile[] = [];
+  protected _x: number;
+  protected _y: number;
+  protected readonly _rightBorder: number;
+  protected readonly _lowerBorder: number;
+  protected _projectiles: Projectile[] = [];
   private _upPos: string[][] = [
     [' ', '#', ' '],
     ['@', '#', '@'],
