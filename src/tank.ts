@@ -4,8 +4,8 @@ import { DirectionsType, Projectile } from './projectile';
 export class Tank {
   private _x: number;
   private _y: number;
-  private _rightBorder: number;
-  private _lowerBorder: number;
+  private readonly _rightBorder: number;
+  private readonly _lowerBorder: number;
   private _projectiles: Projectile[] = [];
   private _upPos: string[][] = [
     [' ', '#', ' '],
