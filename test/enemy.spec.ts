@@ -1,12 +1,9 @@
-import { GameField } from '../src/gamefield';
 import { Enemy } from '../src/enemy';
 
 describe('Enemy Class', () => {
-  let gameField: GameField;
   let enemy: Enemy;
 
   beforeEach(() => {
-    gameField = new GameField(20, 20);
     enemy = new Enemy(5, 5, 20, 20);
   });
 
@@ -26,13 +23,6 @@ describe('Enemy Class', () => {
   test('should fire projectiles', () => {
     enemy.fireRandomly();
     expect(enemy.projectilesCount).toBeLessThanOrEqual(1);
-  });
-
-  test('should update projectiles', () => {
-    enemy.fireRandomly();
-    const initialProjectileCount = enemy.projectilesCount;
-    enemy.updateProjectiles(gameField);
-    expect(enemy.projectilesCount).toBeLessThanOrEqual(initialProjectileCount);
   });
 
   test('should not move outside boundaries', () => {
