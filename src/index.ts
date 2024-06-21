@@ -42,21 +42,25 @@ const updateGame = () => {
   }
 
   player.putTank(gameField);
+  player.updateProjectiles(gameField);
+  enemies.forEach((enemy) => {
+    if (enemy.isKilled(gameField)) {
+      enemies.pop();
+    }
+  });
+
   enemies.forEach((enemy) => {
     enemy.putTank(gameField);
     enemy.updateProjectiles(gameField);
   });
-  player.updateProjectiles(gameField);
-  if(player.isKilled(gameField)) {
-    console.log('Game Over! You are killed.')
+
+  if (player.isKilled(gameField)) {
+    console.log('Game Over! You are killed.');
     process.exit(0);
   }
-  enemies.forEach((enemy) => {
-    if(enemy.isKilled(gameField))
-    enemies.pop();
-  });
+
   if (enemies.length === 0) {
-    console.log('You win! All enemies are killed.')
+    console.log('You win! All enemies are killed.');
     process.exit(0);
   }
   gameField.showGameField();
