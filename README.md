@@ -21,18 +21,23 @@ Authors: [Vladislav Kovalenko](https://github.com/VladiusVostokus), [Kiril Yakym
 3. In root directory of project write in console
 ```bash
  npx ts-node .\src\index.ts
-# use key
+# use keys
 --difficult (1-10) to set difficulty
 if there are no this key - difficulty = 1
+--size <size> to set the size of the square gamefield
+if there are no this key - size = 20
 ```
+
 3.1 Or use docker, white in console in root directory of project
 ```bash
 docker build -t console_tanks
 docker run console_tanks
-# use key
+# use keys
 --difficult (1-10) to set difficulty
 docker run console_tanks node dist/index.js —difficulty (1-10)
 if there are no this key - difficulty = 1
+--size <size> to set the size of the square gamefield
+if there are no this key - size = 20
 ```
 
 4.To run tests
