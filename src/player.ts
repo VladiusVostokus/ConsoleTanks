@@ -1,8 +1,9 @@
 import { Tank } from './tank';
+import { Enemy } from './enemy';
 
 export class Player extends Tank {
   private _lastShootTime: number = 0;
-  private _shootInterval: number;
+  private readonly _shootInterval: number;
 
   constructor(
     y: number,
@@ -43,5 +44,21 @@ export class Player extends Tank {
 
   action(button: string) {
     (this._controls[button] || (() => {}))();
+  }
+
+  checkCollisionWithEnemies(enemies: Enemy[]): boolean {
+    for (const enemy of enemies) {
+      for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          const playerCell = this.y + i + ',' + (this.x + j);
+          const enemyCell = enemy.y + i + ',' + (enemy.x + j);
+
+          if (playerCell === enemyCell) {
+            return true;
+          }
+        }
+      }
+    }
+    return false;
   }
 }

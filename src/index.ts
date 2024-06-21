@@ -8,9 +8,20 @@ import { options } from '@stlib/utils';
 const HEIGHT: number = Number(options?.size ?? 20);
 const WIDTH: number = Number(options?.size ?? 20);
 const GAME_UPDATE_TIMEOUT: number = 60;
-const ENEMY_MOVE_TIMEOUT: number = 500 / Number(options?.difficulty || 1);
-const ENEMY_FIRE_TIMEOUT: number = 1000 / Number(options?.difficulty || 1);
-const PLAYER_SHOOT_TIMEOUT: number = 500 * Number(options?.difficulty || 1);
+
+const setDifficulty = () => {
+  if (options?.difficulty && Number(options.difficulty) <= 10) {
+    return Number(options.difficulty);
+  } else if (options?.difficulty && Number(options.difficulty) > 10) {
+    return 10;
+  }
+  return 1;
+}
+
+const DIFFICULTY_LEVEL = setDifficulty();
+const ENEMY_MOVE_TIMEOUT: number = 500 / DIFFICULTY_LEVEL;
+const ENEMY_FIRE_TIMEOUT: number = 1000 / DIFFICULTY_LEVEL;
+const PLAYER_SHOOT_TIMEOUT: number = 500 * DIFFICULTY_LEVEL;
 
 const gameField: GameField = new GameField(WIDTH, HEIGHT);
 const player: Player = new Player(9, 9, WIDTH, HEIGHT, PLAYER_SHOOT_TIMEOUT);
@@ -24,6 +35,12 @@ if (process.stdin.isTTY) {
 const updateGame = () => {
   console.clear();
   gameField.updateGameField();
+
+  if (player.checkCollisionWithEnemies(enemies)) {
+    console.log('Game Over! Player crashed into enemy.');
+    process.exit(0);
+  }
+
   player.putTank(gameField);
   player.updateProjectiles(gameField);
   enemies.forEach((enemy) => {
