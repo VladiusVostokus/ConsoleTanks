@@ -45,7 +45,7 @@ const updateGame = () => {
   player.updateProjectiles(gameField);
   enemies.forEach((enemy) => {
     if (enemy.isKilled(gameField)) {
-      enemies.pop();
+      enemies.splice(enemies.indexOf(enemy), 1);
     }
   });
 
