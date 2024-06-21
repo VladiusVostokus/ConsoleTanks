@@ -7,6 +7,7 @@
   "author": "Vladislav Kovalenko <kovalenkov222@gmail.com>, Kiril Yakymchuk <stbestich@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "prebuild": "rimraf dist",
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "start:dev": "nodemon src/index.ts",
