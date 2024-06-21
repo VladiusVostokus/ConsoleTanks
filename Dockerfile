@@ -3,13 +3,13 @@ FROM node:21-alpine3.18 as build
 
 WORKDIR /usr/src/app
 
-COPY package.json yarn.lock ./
+COPY package.json package-lock.json ./
 
-RUN yarn install --frozen-lockfile
+RUN npm install
 
 COPY . .
 
-RUN yarn build
+RUN npm run build
 
 # Production
 FROM node:21-alpine3.18
@@ -20,9 +20,9 @@ USER node
 
 WORKDIR /usr/src/app
 
-COPY package.json yarn.lock ./
+COPY package.json package-lock.json ./
 
-RUN yarn install --production --frozen-lockfile
+RUN npm install --production
 
 COPY --from=build /usr/src/app/dist ./dist
 
