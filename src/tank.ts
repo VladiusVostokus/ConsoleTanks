@@ -7,28 +7,28 @@ export class Tank {
   protected readonly _rightBorder: number;
   protected readonly _lowerBorder: number;
   protected _projectiles: Projectile[] = [];
-  private _upPos: string[][] = [
+  protected _upPos: string[][] = [
     [' ', '#', ' '],
     ['@', '#', '@'],
     ['@', '#', '@'],
   ];
-  private _downPos: string[][] = [
+  protected _downPos: string[][] = [
     ['@', '#', '@'],
     ['@', '#', '@'],
     [' ', '#', ' '],
   ];
-  private _leftPos: string[][] = [
+  protected _leftPos: string[][] = [
     [' ', '@', '@'],
     ['#', '#', '#'],
     [' ', '@', '@'],
   ];
-  private _rightPos: string[][] = [
+  protected _rightPos: string[][] = [
     ['@', '@', ' '],
     ['#', '#', '#'],
     ['@', '@', ' '],
   ];
 
-  private _curPos: string[][];
+  protected _curPos: string[][];
 
   constructor(y: number, x: number, rightWall: number, lowerWall: number) {
     this._y = y;

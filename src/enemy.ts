@@ -5,8 +5,30 @@ import { DirectionsType } from './projectile';
 export class Enemy extends Tank {
   private _directions: DirectionsType[] = ['up', 'down', 'left', 'right'];
 
+  protected _upPos: string[][] = [
+    [' ', 'M', ' '],
+    ['@', 'M', '@'],
+    ['@', 'M', '@'],
+  ];
+  protected _downPos: string[][] = [
+    ['@', 'M', '@'],
+    ['@', 'M', '@'],
+    [' ', 'M', ' '],
+  ];
+  protected _leftPos: string[][] = [
+    [' ', '@', '@'],
+    ['<', '<', '<'],
+    [' ', '@', '@'],
+  ];
+  protected _rightPos: string[][] = [
+    ['@', '@', ' '],
+    ['>', '>', '>'],
+    ['@', '@', ' '],
+  ];
+
   constructor(y: number, x: number, rightWall: number, lowerWall: number) {
     super(y, x, rightWall, lowerWall);
+    this._curPos = this._upPos;
   }
 
   moveRandomly() {
