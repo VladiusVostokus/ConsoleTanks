@@ -1,5 +1,5 @@
 import { GameField } from './gamefield';
-import { Tank } from './tank';
+import { Player } from './player';
 import readline from 'readline';
 import process from 'process';
 
@@ -8,7 +8,7 @@ const WIDTH: number = 20;
 const TIMEOUT: number = 60;
 
 const gameField = new GameField(WIDTH, HEIGHT);
-const tank = new Tank(9,9, WIDTH, HEIGHT);
+const player = new Player(9,9, WIDTH, HEIGHT);
 
 readline.emitKeypressEvents(process.stdin);
 if (process.stdin.isTTY) {
@@ -18,42 +18,14 @@ if (process.stdin.isTTY) {
 const updateGame = () => {
     console.clear();
     gameField.updateGameField();
-    tank.putTank(gameField);
-    tank.updateProjectiles(gameField);
+    player.putTank(gameField);
+    player.updateProjectiles(gameField);
     gameField.showGameField();
 };
 
-const controls: { [key: string]: () => void } = {
-    w: () => {
-      tank.turnUp();
-    },
-
-    a: () => {
-      tank.turnLeft();
-    },
-
-    s: () => {
-      tank.turnDown();
-    },
-
-    d: () => {
-      tank.turnRight();
-    },
-
-    f: () => {
-       tank.fire();
-    },
-
-    q: () => {
-      console.log("game over");
-      process.exit(0);
-    },
-  };
-  
-const action = (button: string): void => (controls[button] || (() => {}))();
   
 process.stdin.on("keypress", (button: string) => {
-    action(button);
+    player.action(button);
 });
   
 setInterval(updateGame, TIMEOUT);
