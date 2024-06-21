@@ -22,7 +22,7 @@ Authors: [Vladislav Kovalenko](https://github.com/VladiusVostokus), [Kiril Yakym
 ```bash
  npx ts-node .\src\index.ts
 # use keys
---difficult (1-10) to set difficulty
+--difficulty (1-10) to set difficulty
 if there are no this key - difficulty = 1
 --size <size> to set the size of the square gamefield
 if there are no this key - size = 20
@@ -33,7 +33,7 @@ if there are no this key - size = 20
 docker build -t console_tanks
 docker run console_tanks
 # use keys
---difficult (1-10) to set difficulty
+--difficulty (1-10) to set difficulty
 docker run console_tanks node dist/index.js —difficulty (1-10)
 if there are no this key - difficulty = 1
 --size <size> to set the size of the square gamefield
