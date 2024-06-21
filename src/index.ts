@@ -10,9 +10,10 @@ const WIDTH: number = Number(options?.size ?? 20);
 const GAME_UPDATE_TIMEOUT: number = 60;
 const ENEMY_MOVE_TIMEOUT: number = 500 / Number(options?.difficulty || 1);
 const ENEMY_FIRE_TIMEOUT: number = 1000 / Number(options?.difficulty || 1);
+const PLAYER_SHOOT_TIMEOUT: number = 500 * Number(options?.difficulty || 1);
 
 const gameField: GameField = new GameField(WIDTH, HEIGHT);
-const player: Player = new Player(9, 9, WIDTH, HEIGHT);
+const player: Player = new Player(9, 9, WIDTH, HEIGHT, PLAYER_SHOOT_TIMEOUT);
 const enemies: Enemy[] = [new Enemy(5, 5, WIDTH, HEIGHT)];
 
 readline.emitKeypressEvents(process.stdin);
@@ -25,10 +26,10 @@ const updateGame = () => {
   gameField.updateGameField();
   player.putTank(gameField);
   player.updateProjectiles(gameField);
-  enemies.forEach(enemy => {
+  enemies.forEach((enemy) => {
     enemy.putTank(gameField);
     enemy.updateProjectiles(gameField);
-  })
+  });
   gameField.showGameField();
 };
 
@@ -37,12 +38,20 @@ process.stdin.on('keypress', (button: string) => {
 });
 
 setInterval(updateGame, GAME_UPDATE_TIMEOUT);
-setInterval(() => enemies.forEach(enemy => {
-  enemy.moveRandomly();
-}), ENEMY_MOVE_TIMEOUT);
-setInterval(() => enemies.forEach(enemy => {
-  enemy.fireRandomly();
-}), ENEMY_FIRE_TIMEOUT);
+setInterval(
+  () =>
+    enemies.forEach((enemy) => {
+      enemy.moveRandomly();
+    }),
+  ENEMY_MOVE_TIMEOUT,
+);
+setInterval(
+  () =>
+    enemies.forEach((enemy) => {
+      enemy.fireRandomly();
+    }),
+  ENEMY_FIRE_TIMEOUT,
+);
 
 const spawnEnemy = () => {
   if (enemies.length < 3) {

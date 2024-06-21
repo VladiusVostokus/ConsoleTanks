@@ -1,8 +1,18 @@
 import { Tank } from './tank';
 
 export class Player extends Tank {
-  constructor(y: number, x: number, rightWall: number, lowerWall: number) {
+  private _lastShootTime: number = 0;
+  private _shootInterval: number;
+
+  constructor(
+    y: number,
+    x: number,
+    rightWall: number,
+    lowerWall: number,
+    shootInterval: number,
+  ) {
     super(y, x, rightWall, lowerWall);
+    this._shootInterval = shootInterval;
   }
 
   private _controls: { [key: string]: () => void } = {
@@ -19,7 +29,11 @@ export class Player extends Tank {
       this.turnRight();
     },
     f: () => {
-      this.fire();
+      const currentTime = Date.now();
+      if (currentTime - this._lastShootTime >= this._shootInterval) {
+        this.fire();
+        this._lastShootTime = currentTime;
+      }
     },
     q: () => {
       console.log('game over');
