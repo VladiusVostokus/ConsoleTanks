@@ -2,9 +2,10 @@ import { GameField } from './gamefield';
 import { Player } from './player';
 import readline from 'readline';
 import process from 'process';
+import { options } from '@stlib/utils';
 
-const HEIGHT: number = 20;
-const WIDTH: number = 20;
+const HEIGHT: number = Number(options?.size ?? 20);
+const WIDTH: number = Number(options?.size ?? 20);
 const TIMEOUT: number = 60;
 
 const gameField = new GameField(WIDTH, HEIGHT);
