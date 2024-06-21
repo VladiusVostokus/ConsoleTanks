@@ -10,23 +10,18 @@ export class Player extends Tank {
         w: () => {
           this.turnUp();
         },
-    
         a: () => {
           this.turnLeft();
         },
-    
         s: () => {
           this.turnDown();
         },
-    
         d: () => {
           this.turnRight();
         },
-    
         f: () => {
           this.fire();
         },
-    
         q: () => {
           console.log("game over");
           process.exit(0);

@@ -1,32 +1,28 @@
 import { GameField } from "./gamefield";
 
+export type DirectionsType = 'up' | 'down' | 'left' | 'right';
+
 export class Projectile {
     private _symbol: string = 'o';
     private _x: number;
     private _y: number;
-    private _direction: string;
+    private readonly _direction: DirectionsType;
 
-    constructor( y: number, x: number, direction: string) {
+    constructor( y: number, x: number, direction: DirectionsType) {
         this._y = y;
         this._x = x;
         this._direction = direction;
     }
 
     moveProjectile() {
-        switch (this._direction) {
-            case 'up':
-                this._y--;
-                break;
-            case 'down':
-                this._y++;
-                break;
-            case 'left':
-                this._x--;
-                break;
-            case 'right':
-                this._x++;
-                break;
-        }
+      const directions: { [key: string]: () => number } = {
+        up: () => this._y--,
+        down: () => this._y++,
+        left: () => this._x--,
+        right: () => this._x++,
+      }
+
+        directions[this._direction]()
     }
 
     insideBorder(rightBorder: number, lowerBorder:number): boolean {

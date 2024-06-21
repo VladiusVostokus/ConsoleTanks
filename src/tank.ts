@@ -1,5 +1,5 @@
 import { GameField } from "./gamefield";
-import { Projectile } from "./projectile";
+import { DirectionsType, Projectile } from './projectile';
 
 export class Tank{
     private _x: number;
@@ -65,7 +65,7 @@ export class Tank{
     fire() {
         let fireX: number = this._x;
         let fireY: number = this._y;
-        let direction: string = '';
+        let direction: DirectionsType = 'up';
 
         switch (this._curPos) {
             case this._upPos:
