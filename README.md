@@ -30,8 +30,8 @@ if there are no this key - size = 20
 
 3.1 Or use docker, white in console in root directory of project
 ```bash
-docker build -t console_tanks
-docker run console_tanks
+docker build -t console_tanks .
+docker run console_tanks 
 # use keys
 --difficulty (1-10) to set difficulty
 docker run console_tanks node dist/index.js —difficulty (1-10)
