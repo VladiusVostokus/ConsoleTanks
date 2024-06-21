@@ -1,54 +1,55 @@
 import { GameField } from '../src/gamefield';
 
-const HEIGHT: number = 10;
-const WIDTH: number = 10;
+describe('Gamefield class', () => {
+  const HEIGHT: number = 10;
+  const WIDTH: number = 10;
+  let gameField: GameField;
 
-describe('Check properties of gamefiedl', () => {
-    it('Check size', () => {
-        const gameField = new GameField(WIDTH, HEIGHT);
-        gameField.updateGameField();
-        expect(gameField.getHeight()).toBe(HEIGHT);
-        expect(gameField.getWidth()).toBe(WIDTH);
+  beforeEach(() => {
+    gameField = new GameField(HEIGHT, WIDTH);
+  });
 
-        gameField.updateGameField();
-        expect(gameField.getHeight()).toBe(HEIGHT);
-        expect(gameField.getWidth()).toBe(WIDTH);
-    });
+  it('Check size', () => {
+    gameField.updateGameField();
+    expect(gameField.getHeight()).toBe(HEIGHT);
+    expect(gameField.getWidth()).toBe(WIDTH);
 
-    it('Check get and set', () => {
-        const gameField = new GameField(WIDTH, HEIGHT);
-        gameField.updateGameField();
-        gameField.setCell(5, 5,'%');
-        const cell:string = gameField.getCell(5,5);
-        expect(cell).toBe('%');
-    });
+    gameField.updateGameField();
+    expect(gameField.getHeight()).toBe(HEIGHT);
+    expect(gameField.getWidth()).toBe(WIDTH);
+  });
 
-    it('Check wall and space values', () => {
-        const gameField = new GameField(WIDTH, HEIGHT);
-        gameField.updateGameField();
-        const topWall = gameField.getCell(0,3);
-        const rightWall = gameField.getCell(5,9);
-        const bottomWall = gameField.getCell(9,4);
-        const leftWall = gameField.getCell(6,0);
+  it('Check get and set', () => {
+    gameField.updateGameField();
+    gameField.setCell(5, 5, '%');
+    const cell: string = gameField.getCell(5, 5);
+    expect(cell).toBe('%');
+  });
 
-        const wall = gameField.wall;
+  it('Check wall and space values', () => {
+    gameField.updateGameField();
+    const topWall = gameField.getCell(0, 3);
+    const rightWall = gameField.getCell(5, 9);
+    const bottomWall = gameField.getCell(9, 4);
+    const leftWall = gameField.getCell(6, 0);
 
-        expect(topWall).toBe(wall);
-        expect(rightWall).toBe(wall);
-        expect(bottomWall).toBe(wall);
-        expect(leftWall).toBe(wall);
+    const wall = gameField.wall;
 
-        const upperLeftSpace = gameField.getCell(1,1);
-        const upperRightSpace = gameField.getCell(1,8);
-        const lowerRightSpace = gameField.getCell(8,8);
-        const loverLeftSpace = gameField.getCell(8,1);
+    expect(topWall).toBe(wall);
+    expect(rightWall).toBe(wall);
+    expect(bottomWall).toBe(wall);
+    expect(leftWall).toBe(wall);
 
-        const space = gameField.space;
+    const upperLeftSpace = gameField.getCell(1, 1);
+    const upperRightSpace = gameField.getCell(1, 8);
+    const lowerRightSpace = gameField.getCell(8, 8);
+    const loverLeftSpace = gameField.getCell(8, 1);
 
-        expect(upperLeftSpace).toBe(space);
-        expect(upperRightSpace).toBe(space);
-        expect(lowerRightSpace).toBe(space);
-        expect(loverLeftSpace).toBe(space);
-    });
+    const space = gameField.space;
+
+    expect(upperLeftSpace).toBe(space);
+    expect(upperRightSpace).toBe(space);
+    expect(lowerRightSpace).toBe(space);
+    expect(loverLeftSpace).toBe(space);
+  });
 });
-  

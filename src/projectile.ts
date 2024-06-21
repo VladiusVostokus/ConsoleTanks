@@ -1,58 +1,56 @@
-import { GameField } from "./gamefield";
+import { GameField } from './gamefield';
+
+export type DirectionsType = 'up' | 'down' | 'left' | 'right';
 
 export class Projectile {
-    private _symbol: string = 'o';
-    private _x: number;
-    private _y: number;
-    private _direction: string;
+  private _symbol: string = 'o';
+  private _x: number;
+  private _y: number;
+  private readonly _direction: DirectionsType;
 
-    constructor( y: number, x: number, direction: string) {
-        this._y = y;
-        this._x = x;
-        this._direction = direction;
-    }
+  constructor(y: number, x: number, direction: DirectionsType) {
+    this._y = y;
+    this._x = x;
+    this._direction = direction;
+  }
 
-    moveProjectile() {
-        switch (this._direction) {
-            case 'up':
-                this._y--;
-                break;
-            case 'down':
-                this._y++;
-                break;
-            case 'left':
-                this._x--;
-                break;
-            case 'right':
-                this._x++;
-                break;
-        }
-    }
+  moveProjectile() {
+    const directions: { [key: string]: () => number } = {
+      up: () => this._y--,
+      down: () => this._y++,
+      left: () => this._x--,
+      right: () => this._x++,
+    };
 
-    insideBorder(rightBorder: number, lowerBorder:number): boolean {
-        return this._x !== 1 && 
-               this._x + 1 !== rightBorder &&
-               this._y !== 1 &&
-               this._y + 1 !== lowerBorder;
-    }
+    directions[this._direction]();
+  }
 
-    putProjectile(gamefield: GameField) {
-        gamefield.setCell(this._y, this._x, this._symbol);
-    }
+  insideBorder(rightBorder: number, lowerBorder: number): boolean {
+    return (
+      this._x !== 1 &&
+      this._x + 1 !== rightBorder &&
+      this._y !== 1 &&
+      this._y + 1 !== lowerBorder
+    );
+  }
 
-    get x() {
-        return this._x;
-    }
+  putProjectile(gamefield: GameField) {
+    gamefield.setCell(this._y, this._x, this._symbol);
+  }
 
-    get y() {
-        return this._y;
-    }
+  get x() {
+    return this._x;
+  }
 
-    get direction() {
-        return this._direction;
-    }
+  get y() {
+    return this._y;
+  }
 
-    get symbol() {
-        return this._symbol;
-    }
+  get direction() {
+    return this._direction;
+  }
+
+  get symbol() {
+    return this._symbol;
+  }
 }
